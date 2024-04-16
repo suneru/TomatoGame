@@ -1,7 +1,7 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import CurrentUserNameInstance from './UserInstance';
+import CurrentUserNameInstance from './Class/UserInstance';
 
 
 export default function SuperTime(TimeElapsed) {

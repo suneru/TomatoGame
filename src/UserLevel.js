@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import MainLinks from './MainLinks';
 import NewGame from './NewGame';
-import LevelInstance from './LevelInstance';
+import LevelInstance from './Class/LevelInstance';
 
 import React from 'react'
 

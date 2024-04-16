@@ -36,7 +36,7 @@ app.listen(port, () => {
     })
     .catch(err => {
         console.error(err);
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa "+err);
+        console.log("Error "+err);
         res.status(500).json({ error: err.toString() });
     });
 });
@@ -58,10 +58,10 @@ app.get('/Server/UserProfile/:CurrentUserName', async (req, res) => {
     .then(user => {
         if (user) {
             console.log(user);
-            console.log("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHA USER IS  FOUND");
+            console.log("USER IS  FOUND");
             res.json(user);
         } else {
-            console.log("######################################################### USER NOT FOUND");
+            console.log("USER NOT FOUND");
             res.json(user);
         }
     })
@@ -87,10 +87,10 @@ app.get('/Server/TopScore/:Rank', async (req, res) => {
     .then(user => {
         if (user) {
             console.log(user);
-            console.log("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHA USER IS  FOUND");
+            console.log("USER IS  FOUND");
             res.json(user);
         } else {
-            console.log("######################################################### USER NOT FOUND");
+            console.log("USER NOT FOUND");
             res.json(user);
         }
     })
@@ -104,7 +104,7 @@ app.put('/Server/SuperTime/:CurrentUserName', async (req, res) => {
     let newSuperTime = req.body.SuperTime;
     User.findOneAndUpdate({ "Name": CurrentUserName }, { SuperTime: newSuperTime }, { new: true })
     .then(user => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! BEST TIME UPDATED");
+        console.log("BEST TIME UPDATED");
     })
     .catch(err => {
         console.log(err);
@@ -116,7 +116,7 @@ app.put('/Server/GamesPlayed/:CurrentUserName', async (req, res) => {
     let newGamesPlayed = req.body.GamesPlayed;
     User.findOneAndUpdate({ "Name": CurrentUserName }, { GamesPlayed: newGamesPlayed }, { new: true })
     .then(user => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! GAMES PLAYED UPDATED");
+        console.log("GAMES PLAYED UPDATED");
         res.json(user);
     })
     .catch(err => {
@@ -129,7 +129,7 @@ app.put('/Server/Won/:CurrentUserName', async (req, res) => {
     let newWon = req.body.Won;
     User.findOneAndUpdate({ "Name": CurrentUserName }, { Won: newWon }, { new: true })
     .then(user => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! GAMES WON UPDATED");
+        console.log("GAMES WON UPDATED");
         res.json(user);
     })
     .catch(err => {
@@ -153,7 +153,7 @@ app.put('/Server/UpdateTopScore', async (req, res) => {
       for (let i = 0; i < SortedUsers.length; i++) {
         const user = SortedUsers[i];
         User.updateOne({ _id: user._id }, { Rank: i + 1 })
-          .then(() => console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRrR  User rank updated successfully"))
+          .then(() => console.log("User rank updated successfully"))
           .catch(err => console.log("Error updating user rank: " + err));
       }
     })

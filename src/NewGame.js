@@ -5,8 +5,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import MainLinks from './MainLinks';
 import PlayerLife from './PlayerLife';
 import GameTimer from './GameTimer';
-import CurrentUserNameInstance from './UserInstance';
-import CurrentLevelSingleton from './LevelInstance';
+import CurrentUserNameInstance from './Class/UserInstance';
+import CurrentLevelSingleton from './Class/LevelInstance';
 import SuperTime from './SuperTime';
 
 
@@ -81,7 +81,7 @@ export function GameOver(){
     return(
         <div>
             <i className="bi bi-emoji-frown-fill btn btn btn-lg m-4 fs-1 fw-bold" style={{cursor: 'auto'}}></i><br/>
-            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<StartGame />, document.getElementById('Box')); }}>New Quis over</button>
+            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<NewGame />, document.getElementById('Box')); }}>New Quis over</button>
             {/* <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<StartGame />, document.getElementById('Box')); ReactDOM.render(<PlayerLife HowManyHearts={3} />, document.getElementById('PlayerHere')); }}>New Quis</button> */}
 
         </div>
@@ -94,7 +94,7 @@ function GameWon(){
             <a className="btn btn-success btn-lg fw-bold" style={{cursor: 'auto'}}>Correct</a><br/>
             {/* <i className="bi bi-hand-thumbs-up-fill btn btn-danger btn-lg m-4" style={{cursor: 'auto'}}></i><br/> */}
             {/* <i className="bi bi-emoji-tear" style={{cursor: 'auto'}} ></i><br/> */}
-            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => ReactDOM.render(<StartGame  />, document.getElementById('Box'))}>New Quis</button>
+            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => ReactDOM.render(<NewGame  />, document.getElementById('Box'))}>New Quis</button>
         </div>
     );
 }
@@ -170,11 +170,12 @@ function Game(props){
     );
 }
         
-export default function StartGame(){
+export default function NewGame(){
 
     UpdateGamesPlayed();
     //ReactDOM.render(<PlayerLife HowManyHearts={3} stopTimer={stopTimer} />, document.getElementById('PlayerHere'));
- 
+    var pageView = sessionStorage.getItem("pageView");
+  
 
     let TimeLeft;
     let TimeElapsed = 0;

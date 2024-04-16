@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import MainLinks from './MainLinks';
 import React from 'react'
-import CurrentUserName from './UserInstance';
+import CurrentUserName from './Class/UserInstance';
 
 export default function UserProfile(){
     ReactDOM.render(<div></div>, document.getElementById('TimerHere'));
