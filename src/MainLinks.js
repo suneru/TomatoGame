@@ -25,8 +25,9 @@ export default function MainLinks(){
             <button className="btn btn-outline-danger btn-lg m-2 fw-bold" onClick={() => ReactDOM.render(<TopScore />, document.getElementById('Box'))} style={{width:"200px"}}>Top Score</button><br/>
             <button className="btn btn-outline-danger btn-lg m-2 fw-bold" onClick={() => ReactDOM.render(<UserProfile />, document.getElementById('Box'))} style={{width:"200px"}}>Profile</button><br/>
             <button className="btn btn-outline-danger btn-lg m-2 fw-bold" onClick={() => {
-               
-                ReactDOM.render(<LoginUser />, document.getElementById('Box')) ;ReactDOM.render(<p></p>, document.getElementById('PlayerHere'));
+                ReactDOM.render(<div></div>, document.getElementById('PlayerHere')); 
+                ReactDOM.render(<div></div>, document.getElementById('TimerHere'));
+                ReactDOM.render(<LoginUser />, document.getElementById('Box'));
             }} style={{width:"200px"}}>Logout</button><br/>
         </div>
     );

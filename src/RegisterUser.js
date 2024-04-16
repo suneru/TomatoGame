@@ -16,15 +16,15 @@ export default function RegisterUser() {
             <a className="btn btn-outline-danger m-4 fs-1 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<LoginUser />, document.getElementById('Box'))}><i className="bi bi-headset-vr fs-1 fw-bold"></i>TOMATO</a>
             <br/><br/><br/>
             <div className="input-group mb-3">
-                <span className="input-group-text btn btn-secondary" id="Username"> Username</span>
+                <span className="input-group-text btn btn-secondary" id="Username"><i className="bi bi-at"></i>Username</span>
                 <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="Username" ref={usernameRef}/>
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text btn btn-secondary" id="Password"> Password</span>
+                <span className="input-group-text btn btn-secondary" id="Password"><i className="bi bi-asterisk fw-bold"></i>Password</span>
                 <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="Password" ref={passwordRef}/>
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text btn btn-secondary" id="ConfirmPassword"> Password</span>
+                <span className="input-group-text btn btn-secondary" id="ConfirmPassword"><i className="bi bi-asterisk fw-bold"></i>Password</span>
                 <input type="password" className="form-control" placeholder="Confirm Password" aria-label="ConfirmPassword" aria-describedby="ConfirmPassword" ref={ConfirmpasswordRef}/>
             </div>
             <button type="button" className="btn btn-dark btn-lg m-2 fw-bold" onClick={() => RegisterHandle(usernameRef.current.value, passwordRef.current.value, ConfirmpasswordRef.current.value)}><i className="bi bi-person-add  fs-1 fw-bold"></i> Register</button>
@@ -49,6 +49,7 @@ function RegisterHandle(NewUserName, NewPassword, NewConfirmPassword){
                             UserID: null,
                             Name: NewUserName,
                             Password: NewPassword,
+                            DailyStreaks: 0,
                             Rank: 0,
                             SuperTime: 60,
                             GamesPlayed: 0,

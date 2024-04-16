@@ -30,14 +30,14 @@ async function UpdateGamesWon(){
         }),
     })
     .catch((error) => {
-        // console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrror:', error);
+       
     });
 
     await fetch(`http://localhost:4000/Server/UserProfile/${UserData.Name}`)
     .then(response => response.json())
     .then(Data => {
         CurrentUserNameInstance.setUserName(Data);
-        // console.log("GGGGGGGGGAAAAAMEEEEEEESSSS WWWWWWWOOOOOOONNNNNNNN     "+CurrentUserNameInstance.getUserName().Won);
+       
     })
     .catch(error => console.error('Error:', error));
 }
@@ -65,14 +65,14 @@ async function UpdateGamesPlayed(){
         console.table(Data);
     })
     .catch((error) => {
-        // console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrror:', error);
+        
     });
 
     await fetch(`http://localhost:4000/Server/UserProfile/${UserData.Name}`)
     .then(response => response.json())
     .then(Data => {
         CurrentUserNameInstance.setUserName(Data);
-        // console.log("GGGGGGGGGAAAAAMEEEEEEESSSS PPPPLLLAAAAYYYYEEEEDDDDD     "+CurrentUserNameInstance.getUserName().GamesPlayed);
+       
     })
     .catch(error => console.error('Error:', error));
 }
@@ -81,10 +81,8 @@ export function GameOver(){
     return(
         <div>
             <i className="bi bi-emoji-frown-fill btn btn btn-lg m-4 fs-1 fw-bold" style={{cursor: 'auto'}}></i><br/>
-            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<NewGame />, document.getElementById('Box')); }}>New Quis over</button>
-            {/* <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<StartGame />, document.getElementById('Box')); ReactDOM.render(<PlayerLife HowManyHearts={3} />, document.getElementById('PlayerHere')); }}>New Quis</button> */}
-
-        </div>
+            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => { ReactDOM.render(<StartGame />, document.getElementById('Box')); }}>New Quis over</button>
+     </div>
     );
 }
 
@@ -92,9 +90,7 @@ function GameWon(){
     return(
         <div>
             <a className="btn btn-success btn-lg fw-bold" style={{cursor: 'auto'}}>Correct</a><br/>
-            {/* <i className="bi bi-hand-thumbs-up-fill btn btn-danger btn-lg m-4" style={{cursor: 'auto'}}></i><br/> */}
-            {/* <i className="bi bi-emoji-tear" style={{cursor: 'auto'}} ></i><br/> */}
-            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => ReactDOM.render(<NewGame  />, document.getElementById('Box'))}>New Quis</button>
+            <button className="btn btn-outline-warning btn-lg btn-block m-2 fw-bold" onClick={() => ReactDOM.render(<StartGame  />, document.getElementById('Box'))}>New Quis</button>
         </div>
     );
 }
@@ -142,14 +138,16 @@ function Game(props){
     const [HowManyHearts, setHowManyHearts] = useState(props.HowManyHearts);
     return(
         <div className="card text-white" style={{ background: 'rgba(0, 0, 0, 0)', border: 'none',display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <a className="btn btn-outline-danger m-4 fs-1 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<MainLinks />, document.getElementById('Box'))}><i className="bi bi-headset-vr fs-1 fw-bold"></i>TOMATO</a>
+            <a className="btn btn-outline-danger m-4 fs-1 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => {  props.stopTimer()
+                ReactDOM.render(<div></div>, document.getElementById('PlayerHere')); 
+                ReactDOM.render(<div ></div>,  document.getElementById('TimerHere'));
+                ReactDOM.render(<MainLinks />, document.getElementById('Box'));
+                
+            }}><i className="bi bi-headset-vr fs-1 fw-bold"></i>TOMATO</a>
             <img src={props.Tomato.question} className="card-img-top" alt="Tomato API Failed" style={{objectFit: 'cover'}}/>
             <div id="InputAnswer" className="card-body" style={{ background: 'rgba(0, 0, 0, 0)', border: 'none' }}>
                 <div className="input-group mb-3">
                     <span className="btn btn-default" id="AnswerText" style={{cursor: 'auto'}}></span>
-                    {/* { <input type="text" className="form-control" placeholder="Answer" aria-label="Answer" aria-describedby="AnswerText" onKeyUp={() => ReactDOM.render(<CorrectOrNot Correct={parseInt(props.Tomato.solution)} Answer={parseInt(inputRef.current.value)} HowManyHearts={HowManyHearts} setHowManyHearts={setHowManyHearts} stopTimer={props.stopTimer} />, document.getElementById('HeartDisplay'))} ref={inputRef}/>
-                     } */}
-                    {/* <button type="button" className="bi bi-fingerprint btn btn-default fw-bold" onKeyUp={() => ReactDOM.render(<CorrectOrNot Correct={parseInt(props.Tomato.solution)} Answer={parseInt(inputRef.current.value)} HowManyHearts={HowManyHearts} setHowManyHearts={setHowManyHearts} stopTimer={props.stopTimer} />, document.getElementById('HeartDisplay'))}></button> */}
                 </div>
                 <dev>
                 <button type="button" className="bi bi-0-square-fill btn btn-dark" onClick={() => ReactDOM.render(<CorrectOrNot Correct={parseInt(props.Tomato.solution)} Answer={parseInt(0)} HowManyHearts={HowManyHearts} setHowManyHearts={setHowManyHearts} stopTimer={props.stopTimer} />, document.getElementById('HeartDisplay'))} ref={inputRef}></button>&nbsp;
@@ -170,13 +168,10 @@ function Game(props){
     );
 }
         
-export default function NewGame(){
+export default function StartGame(){
 
     UpdateGamesPlayed();
-    //ReactDOM.render(<PlayerLife HowManyHearts={3} stopTimer={stopTimer} />, document.getElementById('PlayerHere'));
-    var pageView = sessionStorage.getItem("pageView");
-  
-
+    
     let TimeLeft;
     let TimeElapsed = 0;
     
@@ -200,13 +195,10 @@ export default function NewGame(){
         if(TimeLeft > 0) {
             TimeLeft = (TimeLeft - 1);
             TimeElapsed = (TimeElapsed + 1);
-            // if(document.getElementById('AnswerText')){
+           
                 
                 ReactDOM.render(<GameTimer TimeLeft={TimeLeft} TimeElapsed={TimeElapsed} />, document.getElementById('TimerHere'));
-            // }
-            // else{
-            //     clearInterval(OneSecPass);
-            // }
+            
         } else {
             clearInterval(OneSecPass);
             ReactDOM.render(<GameOver />, document.getElementById('InputAnswer'));

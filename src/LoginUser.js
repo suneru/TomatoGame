@@ -7,7 +7,6 @@ import CurrentUserNameInstance from './Class/UserInstance';
 import React, {  useRef } from 'react';
 
 
-
 export default function LoginUser() {
     const usernameRef = useRef();
     const passwordRef = useRef();
@@ -20,11 +19,11 @@ export default function LoginUser() {
            
             <br/><br/><br/><br/>
             <div className="input-group mb-3">
-                <span className="input-group-text btn btn-secondary" id="basic-addon1"> Username</span>
+                <span className="input-group-text btn btn-secondary" id="basic-addon1"><i className="bi bi-at"></i>Username</span>
                 <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ref={usernameRef}/>
             </div>
             <div className="input-group mb-3">
-                <span className="input-group-text btn btn-secondary" id="basic-addon1">  Password</span>
+                <span className="input-group-text btn btn-secondary" id="basic-addon1"><i className="bi bi-asterisk"></i> Password</span>
                 <input type="password" className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" ref={passwordRef}/>
             </div>
             <button type="button" className="btn btn-success btn-lg m-2 fw-bold" onClick={() => LoginHandle(usernameRef.current.value, passwordRef.current.value)}><i className="bi bi-fingerprint fs-1 fw-bold"></i> Login</button>&nbsp;
@@ -41,9 +40,7 @@ function LoginHandle(CurrentUserName, CurrentPassword){
         .then(Data => {
             if(Data && CurrentPassword === Data.Password){
                 CurrentUserNameInstance.setUserName(Data);
-              
                 ReactDOM.render(<MainLinks />, document.getElementById('Box'));
-
             }
             else{
                 alert("Invalid Username & Password");

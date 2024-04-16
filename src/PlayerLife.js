@@ -43,10 +43,10 @@ export default function PlayerLife(props) {
 
     return(
         <div className="container-fluid">
-            <a className="btn btn-default btn-lg m-2"  onClick={() => ReactDOM.render(<UserProfile />, document.getElementById('Box'))}>
+            <a className="btn btn-outline-success btn-lg m-2"  onClick={() => ReactDOM.render(<UserProfile />, document.getElementById('Box'))}>
                 &nbsp;&nbsp;&nbsp;
-                <p className="fs-1 fw-bold"><i className="bi bi-emoji-sunglasses" style={{cursor: 'auto'}}> &nbsp;{UserData.Name}</i></p>
-                {/* <p className="fs-1 fw-bold">{UserData.Name}</p> */}
+                <p className="fs-1 fw-bold"><i className="bi bi-emoji-sunglasses" style={{cursor: 'auto'}}> </i></p>
+                <p className="fs-1 fw-bold"><i  style={{cursor: 'auto'}}> &nbsp;{UserData.Name}</i></p>
                 <p className="fs-3ss fw-bold">
                     {Hearts.Life1 ? <i className="bi bi-egg-fill "> </i> : <i className="bi bi-egg"> </i>}
                     {Hearts.Life2 ? <i className="bi bi-egg-fill"> </i> : <i className="bi bi-egg"> </i>}

@@ -16,13 +16,12 @@ import React from 'react';
         <div>
            <a className="btn btn-outline-danger m-4 fs-1 fw-bold" style={{width:"225px", cursor: 'auto'}} onClick={() => ReactDOM.render(<MainLinks />, document.getElementById('Box'))}><i className="bi bi-headset-vr fs-1 fw-bold"></i>TOMATO</a>
         <br/>
-
             <table className="text-start">
                 <tbody>
                     <tr>
                         <tr>
                         <th><a className="btn btn-outline-success m-2 fw-bold" style={{width:"150px", cursor: 'auto'}}><i className="bi bi-person-fill">Player Name</i></a></th>
-                        <th><a className="btn btn-outline-success m-2 fw-bold" style={{width:"130px" , cursor: 'auto'}}><i className="bi bi-hourglass-split">Super Time</i></a></th>
+                        <th><a className="btn btn-outline-success m-2 fw-bold" style={{width:"150px" , cursor: 'auto'}}><i className="bi bi-hourglass-split">Super Time</i></a></th>
                         <th><a className="btn btn-outline-success m-2 fw-bold" style={{width:"140px" , cursor: 'auto'}}><i className="bi bi-trophy-fill">Winner</i></a></th>
 
                         </tr>
@@ -63,9 +62,8 @@ function UsersOfTopScore(porps){
 function UserTopScoreGUI(porps){
     return(
         <tr>
-
-            <td><a className="btn btn-outline-dark m-2 fw-bold" style={{width:"150px", cursor: 'auto'}}><i>{porps.Data.Name}</i></a></td>
-            <td><a className="btn btn-outline-dark m-2 fw-bold" style={{width:"130px", cursor: 'auto'}}><i>{porps.Data.SuperTime}</i></a></td>
+            <td><a className="btn btn-outline-dark m-2 fw-bold" style={{width:"150px", cursor: 'auto'}}>{porps.Data.Name}</a></td>
+            <td><a className="btn btn-outline-dark m-2 fw-bold" style={{width:"150px", cursor: 'auto'}}>{porps.Data.SuperTime}</a></td>
             <td><a className="btn btn-outline-dark m-2 fw-bold" style={{width:"140px", cursor: 'auto'}}><i className={`bi bi-${porps.Data.Rank}-square-fill`}></i></a></td>
 
         </tr>

@@ -42,4 +42,5 @@ export default function UserProfile(){
             </table>
         </div>
     );
+    
 }

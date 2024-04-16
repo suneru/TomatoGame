@@ -1,4 +1,4 @@
-
+import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import CurrentUserNameInstance from './Class/UserInstance';
@@ -31,13 +31,13 @@ export default function SuperTime(TimeElapsed) {
         })
         .catch(error => console.error('Error:', error));
         
-        //alert("New Best Time = "+ TimeElapsed +" Sec");
+      
 
         fetch(`http://localhost:4000/Server/UserProfile/${UserData.Name}`)
         .then(response => response.json())
         .then(Data => {
             CurrentUserNameInstance.setUserName(Data);
-            console.log("NNNNNNNEEEEEEEEWWWWWWWW BBBBEEEESSSSTTTTTT     "+CurrentUserNameInstance.getUserName().SuperTime);
+            console.log("new Best Time"+CurrentUserNameInstance.getUserName().SuperTime);
         })
         .catch(error => console.error('Error:', error));
     }
