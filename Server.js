@@ -20,7 +20,7 @@ app.listen(port, () => {
 
   app.post('/Server/Register', async (req, res) => {
     let newUser = new User({
-        UserID: req.body.UserID,
+        
         Name: req.body.Name,
         Password: req.body.Password,
         Rank: req.body.Rank,
@@ -42,7 +42,7 @@ app.listen(port, () => {
 });
 
 let User = mongoose.model('User', new mongoose.Schema({
-        UserID: Number,
+        
         Name: String,
         Password: String,
         Rank: Number,
@@ -67,11 +67,11 @@ app.get('/Server/UserProfile/:CurrentUserName', async (req, res) => {
     })
     .catch(err => {
         let Dummy = {
-                UserID: "000000",
+              
                 Name: "DUMMY",
                 Password: "DUMMY",
                 Rank: 0,
-                SuperTime: 60,
+                SuperTime: 30,
                 GamesPlayed: 0,
                 Won: 0
         };
